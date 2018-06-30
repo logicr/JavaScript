@@ -9,7 +9,6 @@
 // @match        *://so.gushiwen.org/
 // @grant        none
 // ==/UserScript==
-
 (function() {
     'use strict';
     //$(document).ready(function(){
