@@ -8,4 +8,5 @@
 	* ...
 
 * 效果
-![](https://github.com/logicr/JavaScript/blob/master/Nowcoder-move-AD/%E6%95%88%E6%9E%9C%E5%9B%BE.png")
+
+![](https://github.com/logicr/JavaScript/blob/master/Nowcoder-move-AD/%E6%95%88%E6%9E%9C%E5%9B%BE.png)
