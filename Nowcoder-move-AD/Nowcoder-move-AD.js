@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         牛客网布局优化去广告
 // @namespace    www.logicr.club
-// @version      1.0
+// @version      2.0
 // @description   牛客网布局优化去广告、添加了几个按钮
 // @author       Logicr
 // @match        https://www.nowcoder.com/*
@@ -12,8 +12,32 @@
     //去除反馈
       $(".fixed-menu").remove();
     //顶栏优化icon-mobile-phone
-    $(".icon-mobile-phone").remove();
+    //$(".icon-mobile-phone").remove();
+
+    $("li>a").remove(".icon-mobile-phone");
     $("li").remove(".nav-msg");
+    //顶栏收起
+    $(".header-main.clearfix").hide();
+    //按钮样式改不了啊，算了
+    var showHeadButton = "<button class='' id='SHB' style='display: block;'>点我展开</button>";
+    var hideHeadButton = "<button class='clearfix' id='HHB'>点我隐藏</button>";
+    $(".header-main.clearfix").before(showHeadButton);
+    $(".header-main.clearfix").before(hideHeadButton);
+    $("#HHB").hide();
+    $("#SHB").click(function(){
+        $(".header-main.clearfix").show();
+        $("#SHB").hide();
+        $("#HHB").show();
+    })
+    $("#HHB").click(function(){
+        $(".header-main.clearfix").hide();
+        $("#HHB").hide();
+        $("#SHB").show();
+    })
+
+    //马上挑战下面的条条去除
+    //$(".subject-action.clearfix").remove();
+    $(".subject-menu").remove();
     //
     $("#jsSideTopicList.module-box.side-topic-box").remove();
     $(".module-headclearfix").remove();
@@ -80,6 +104,10 @@
         $("#showButton").show();
         $("#hideButton").hide();
     })
+
+    //修改右侧“查看代码的样式”
+    // document.getElementById("mod-head-link").className = "tag-label";
+
     //oprt-tool clearfix 解答收藏按钮
     $(".oprt-tool.clearfix").hide();
 
