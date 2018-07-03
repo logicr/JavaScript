@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         牛客网布局优化去广告
 // @namespace    www.logicr.club
-// @version      2.0
+// @version      2.1
 // @description   牛客网布局优化去广告、添加了几个按钮
 // @author       Logicr
 // @match        https://www.nowcoder.com/*
@@ -35,6 +35,31 @@
         $("#SHB").show();
     })
 
+     //问题信息收起
+    $(".question-info").hide()
+    var showQuestionButton = "<button class='tag-label' id = 'SQB' >点我展开</button>";
+    var hideQuestionButton = "<button class='tag-label' id = 'HQB'>点我隐藏</button>";
+    $(".question-info").before(showQuestionButton);
+    $(".question-info").before(hideQuestionButton);
+    $("#HQB").hide();
+    $("#SQB").click(function(){
+        $("#SQB").hide();
+        $("#HQB").show();
+        $(".question-info").show();
+    })
+    $("#HQB").click(function(){
+        $("#SQB").show();
+        $("#HQB").hide();
+        $(".question-info").hide();
+    })
+    $("#SQB,#HQB").css({
+    "margin":"22px"
+    })
+
+
+
+    //试题头部的导航去掉
+    $(".crumbs-path").remove();
     //马上挑战下面的条条去除
     //$(".subject-action.clearfix").remove();
     $(".subject-menu").remove();
@@ -53,8 +78,10 @@
     //添加展开按钮
     var responseButton = "<button class='tag-label' id='responseShowButton'>点我展开</button>";
     var responseButtonHide = "<button class='tag-label' id='responseHideButton'>点我隐藏</button>";
-    $(".module-box.js-discussion").before(responseButton);
-    $(".module-box.js-discussion").before(responseButtonHide);
+   // $(".module-box.js-discussion").before(responseButton);
+   // $(".module-box.js-discussion").before(responseButtonHide);
+    $("#jsComment.module-body.answer-mod").before(responseButton);
+    $("#jsComment.module-body.answer-mod").before(responseButtonHide);
     $("#responseHideButton").hide();
     $("#responseShowButton").click(function(){
         $("#jsComment.module-body.answer-mod").show();
@@ -67,6 +94,20 @@
         $("#responseHideButton").hide();
         $("#responseShowButton").show();
 
+    })
+    $("#responseShowButton,#responseHideButton").css({
+        "margin-left":"22px",
+        "margin-top": "10px;",
+        "margin-bottom":"10px"
+    })
+
+    //回答按钮的样式
+    $("#jsDealAnswer.btn.btn-primary.float-right.nc-req-auth").css({
+        "margin-left":"22px",
+        "margin-top": "0px;",
+        "margin-bottom":"10px",
+
+        "padding":"0px",
     })
 
 
