@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         牛客网布局优化去广告
 // @namespace    www.logicr.club
-// @version      2.1
+// @version      2.2
 // @description   牛客网布局优化去广告、添加了几个按钮
 // @author       Logicr
 // @match        https://www.nowcoder.com/*
@@ -16,11 +16,15 @@
 
     $("li>a").remove(".icon-mobile-phone");
     $("li").remove(".nav-msg");
+
+
     //顶栏收起
     $(".header-main.clearfix").hide();
+    //背景色去除
+        $(".nowcoder-header").css("background-color","#EEEEEE");
     //按钮样式改不了啊，算了
-    var showHeadButton = "<button class='' id='SHB' style='display: block;'>点我展开</button>";
-    var hideHeadButton = "<button class='clearfix' id='HHB'>点我隐藏</button>";
+    var showHeadButton = "<button class='tag-label' id='SHB' style='display: block;'>点我展开</button>";
+    var hideHeadButton = "<button class='tag-label' id='HHB'>点我隐藏</button>";
     $(".header-main.clearfix").before(showHeadButton);
     $(".header-main.clearfix").before(hideHeadButton);
     $("#HHB").hide();
@@ -28,12 +32,31 @@
         $(".header-main.clearfix").show();
         $("#SHB").hide();
         $("#HHB").show();
+        //背景色恢复
+        $(".nowcoder-header").css("background-color","");
     })
     $("#HHB").click(function(){
         $(".header-main.clearfix").hide();
         $("#HHB").hide();
         $("#SHB").show();
+        //背景色去除
+        $(".nowcoder-header").css("background-color","#EEEEEE");
     })
+     //鼠标悬停在按钮上的效果
+    $("#SHB,#HHB").hover(function(){
+		$(this).css("background-color","#00BC9B");
+    }
+    )
+    //鼠标离开时的效果
+    $("#SHB,#HHB").mouseleave(function(){
+		$(this).css("background-color","#ffffff");
+    }
+    )
+    //-----------------------------------------------
+
+
+
+
 
      //问题信息收起
     $(".question-info").hide()
@@ -55,7 +78,16 @@
     $("#SQB,#HQB").css({
     "margin":"22px"
     })
-
+    //鼠标悬停在按钮上的效果
+    $("#SQB,#HQB").hover(function(){
+		$(this).css("background-color","#00BC9B");
+    }
+    )
+    //鼠标离开时的效果
+    $("#SQB,#HQB").mouseleave(function(){
+		$(this).css("background-color","#ffffff");
+    }
+    )
 
 
     //试题头部的导航去掉
@@ -109,6 +141,17 @@
 
         "padding":"0px",
     })
+     //鼠标悬停在按钮上的效果
+    $("#responseShowButton,#responseHideButton").hover(function(){
+		$(this).css("background-color","#00BC9B");
+    }
+    )
+    //鼠标离开时的效果
+    $("#responseShowButton,#responseHideButton").mouseleave(function(){
+		$(this).css("background-color","#ffffff");
+    }
+    )
+
 
 
 
@@ -145,6 +188,17 @@
         $("#showButton").show();
         $("#hideButton").hide();
     })
+
+    //鼠标悬停在按钮上的效果
+    $("#showButton,#hideButton").hover(function(){
+		$(this).css("background-color","#00BC9B");
+    }
+    )
+    //鼠标离开时的效果
+    $("#showButton,#hideButton").mouseleave(function(){
+		$(this).css("background-color","#ffffff");
+    }
+    )
 
     //修改右侧“查看代码的样式”
     // document.getElementById("mod-head-link").className = "tag-label";
