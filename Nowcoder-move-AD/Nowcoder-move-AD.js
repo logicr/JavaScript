@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         牛客网布局优化去广告
 // @namespace    www.logicr.club
-// @version      2.2
+// @version      2.3
 // @description   牛客网布局优化去广告、添加了几个按钮
 // @author       Logicr
 // @match        https://www.nowcoder.com/*
@@ -22,7 +22,6 @@
     $(".header-main.clearfix").hide();
     //背景色去除
         $(".nowcoder-header").css("background-color","#EEEEEE");
-    //按钮样式改不了啊，算了
     var showHeadButton = "<button class='tag-label' id='SHB' style='display: block;'>点我展开</button>";
     var hideHeadButton = "<button class='tag-label' id='HHB'>点我隐藏</button>";
     $(".header-main.clearfix").before(showHeadButton);
@@ -152,9 +151,49 @@
     }
     )
 
+     //冥想模式
+    //$(".nowcoder-header").hide();
+    //$(".module-box").hide();
+    //$(".link-green.video-explain ,.link-green ,.subject-title").hide();
 
+    //提示
+    var tbutton = "<button class='tag-label' id='showThinkButton'>关闭冥想</button>";
+    var tbuttonHide = "<button class='tag-label' id='hideThinkButton'>开启冥想</button>";
+    //点击展开
+    $(".subject-main").before(tbutton);
+    $(".subject-title").before(tbuttonHide);
+    $("#showThinkButton").hide();
 
+    $("#showThinkButton").click(function(){
+        $(".nowcoder-header").show();
+        $(".module-box").show();
+        $(".link-green.video-explain ,.link-green ,.subject-title").show();
+        $("#showThinkButton").hide();
+        $("#hideThinkButton").show();
+    })
+    //点击隐藏
+    $("#hideThinkButton").click(function(){
+        $(".nowcoder-header").hide();
+        $(".module-box").hide();
+        $(".link-green.video-explain ,.link-green ,.subject-title").hide();
+        $("#showThinkButton").show();
+        $("#hideThinkButton").hide();
+    })
 
+    //鼠标悬停在按钮上的效果
+    $("#showThinkButton,#hideThinkButton").hover(function(){
+		$(this).css("background-color","#00BC9B");
+    }
+    )
+    //鼠标离开时的效果
+    $("#showThinkButton,#hideThinkButton").mouseleave(function(){
+		$(this).css("background-color","#ffffff");
+    }
+    )
+
+    //题目位置排版
+    $(".nk-content ").css({"margin-top":"90px"});
+    $(" .nk-bar").css({"margin-top":"119px"});
 
 
 
